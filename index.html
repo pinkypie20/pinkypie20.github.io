@@ -1,14 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="https://openlayers.org/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Using OpenLayers with Vite</title>
-    <script type="module" crossorigin src="/assets/index-BR7yBN0A.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-8qqDi7_8.css">
-  </head>
-  <body>
-    <div id="map"></div>
-  </body>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Spering</title>
+
+  <!-- bootstrap core css -->
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <!-- responsive style -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CoUtMUxG.css">
+</head>
+
+<body>
+  <section class="experience_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="img-box">
+            <img src="/assets/experience-img-BKZzBDE9.jpg" alt="">
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                Cover Next : Key generater
+              </h2>
+            </div>
+			<br>
+            <p>
+              Bearbit Username&nbsp; :&nbsp; <input id="username" placeholder="Bearbit Username">
+			  
+            </p>
+			<p>
+			Key expire date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp; <input id="expdate" placeholder="DD/MM/YYYY">
+			</p>
+            <div class="btn-box">
+              <a href="#" class="btn-1" onclick="generateKey()">
+                Generate key
+              </a>
+            </div>
+			<br>
+			<p id="key">
+			Key&nbsp; : &nbsp; <input id="keyInput" placeholder="None">
+			</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- end experience section -->
+
+  <!-- footer section -->
+  <footer class="container-fluid footer_section ">
+    <div class="container">
+      <p>
+        &copy; <span id="displayDate"></span> Hack by anonymous
+      </p>
+    </div>
+  </footer>
+  <!-- end  footer section -->
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/custom.js"></script>
+  <script>
+	function dateStringToTimestamp(dateString) {
+		// Split the date string into day, month, and year
+		const parts = dateString.split('/');
+		
+		// Create a new Date object (months are 0-indexed in JavaScript)
+		const date = new Date(parts[2], parts[1] - 1, parts[0]);
+	
+		// Get the timestamp
+		const timestamp = date.getTime();
+	
+		return timestamp/1000;
+	}
+	function generateKey() {
+		var username = document.getElementById("username").value;
+		var timestamp = dateStringToTimestamp(document.getElementById("expdate").value);
+		var key = CryptoJS.AES.encrypt('{"t":'+timestamp+',"u":"'+username+'"}', username).toString();
+		//console.log(key);
+		document.getElementById("keyInput").value = key;
+	}
+	document.addEventListener('DOMContentLoaded', function() {
+        const inputField = document.getElementById('keyInput');
+
+        inputField.addEventListener('click', function() {
+            // Select the text inside the input field
+            inputField.select();
+            // Copy the selected text to the clipboard
+            document.execCommand('copy');
+        });
+    });
+
+  </script>
+</body>
+</body>
+
 </html>
