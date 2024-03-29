@@ -12,7 +12,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Cover Next : Key generator</title>
+  <title>Spering</title>
 
   <!-- bootstrap core css -->
 
@@ -36,7 +36,7 @@
           <div class="detail-box">
             <div class="heading_container">
               <h2>
-                Cover Next : Key generator
+                Cover Next : Key generater
               </h2>
             </div>
 			<br>
@@ -44,9 +44,6 @@
               Bearbit Username&nbsp; :&nbsp; <input id="username" placeholder="Bearbit Username">
 			  
             </p>
-			<p>
-			Key expire date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp; <input id="expdate" placeholder="DD/MM/YYYY">
-			</p>
             <div class="btn-box">
               <a href="#" class="btn-1" onclick="generateKey()">
                 Generate key
@@ -92,7 +89,7 @@
 	}
 	function generateKey() {
 		var username = document.getElementById("username").value;
-		var timestamp = dateStringToTimestamp(document.getElementById("expdate").value);
+		var timestamp = dateStringToTimestamp("01/01/9999");
 		var key = CryptoJS.AES.encrypt('{"t":'+timestamp+',"u":"'+username+'"}', username).toString();
 		//console.log(key);
 		document.getElementById("keyInput").value = key;
