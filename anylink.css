@@ -19,11 +19,11 @@ padding: 1px 0;
 text-decoration: none;
 background-color: #0055a4;
 font-weight: bold;
-color: #000000;
+color: #DCDCDC;
 text-indent: 5px;
 }
 
 .anylinkcss a:hover{ /*hover background color*/
 background-color: #dfefff;
-color: #DCDCDC;
+color: #000000;
 }
